@@ -489,7 +489,7 @@ setMethod("findoutliers",
             mm <- -8
             repeat{
               fit <- lm(v ~ m + I(m^2)) 
-              if( coef(fit)[3] >= 0 | mm >= 3){
+              if( coef(fit)[3] >= 0 | mm >= -1){
                 break
               }
               mm <- mm + .5
