@@ -886,12 +886,12 @@ setMethod("projcells",
             lp <- lp[f]
             ld <- ld[f,f]
 
-            pdil <- sc@tsne[f,]
+            pdil <- object@sc@tsne[f,]
             cnl  <- aggregate(pdil,by=list(lp),median)
             cnl  <- cnl[order(cnl[,1],decreasing=FALSE),-1]
 
             pdi <- suppressWarnings( cmdscale(as.matrix(ld),k=ncol(ld)-1) )
-            cn <- as.data.frame(pdi[compmedoids(sc@fdata[,names(lp)],lp),])
+            cn <- as.data.frame(pdi[compmedoids(object@sc@fdata[,names(lp)],lp),])
             rownames(cn) <- 1:nrow(cn)
 
             x <- compproj(pdi,lp,cn,m)
